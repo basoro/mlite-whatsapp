@@ -1,9 +1,7 @@
 FROM node:20
 
-# Install Nginx and build dependencies for better-sqlite3
+# Install build dependencies for better-sqlite3
 RUN apt-get update && apt-get install -y \
-    nginx \
-    gettext-base \
     python3 \
     python-is-python3 \
     build-essential \
@@ -21,17 +19,11 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Copy nginx config (it will be processed by start.sh)
-COPY nginx.conf /app/nginx.conf
-
-# Make start script executable
-RUN chmod +x start.sh
-
 # Create directory for auth persistence if needed
 RUN mkdir -p auth
 
-# Expose the port (Railway will override this but good for documentation)
-EXPOSE 8080
+# Expose the port
+EXPOSE 3000
 
 # Start command
-CMD ["./start.sh"]
+CMD ["npm", "start"]

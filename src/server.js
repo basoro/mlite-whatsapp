@@ -18,7 +18,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-const PORT = process.env.APP_PORT || 5000
+const PORT = process.env.PORT || 3000
 
 // --- SQLite Setup ---
 const dbPath = process.env.DB_PATH || 'whatsapp.db'
