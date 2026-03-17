@@ -584,7 +584,7 @@ app.get('/active-user', (req, res) => {
   try {
     let jid = sock && sock.user && sock.user.id ? sock.user.id : null
     if (!jid) {
-      const credsPath = path.resolve(process.cwd(), './wa-gateway/auth/creds.json')
+      const credsPath = path.resolve(process.cwd(), process.env.AUTH_DIR || '/data/auth', 'creds.json')
       if (fs.existsSync(credsPath)) {
         try {
           const raw = fs.readFileSync(credsPath, 'utf8')
@@ -605,7 +605,7 @@ app.get('/active-user', (req, res) => {
 
 app.post('/reset', async (req, res) => {
   try {
-    const authBase = process.env.AUTH_DIR || './wa-gateway/auth'
+    const authBase = process.env.AUTH_DIR || '/data/auth'
     const authDir1 = path.resolve(process.cwd(), authBase)
     const rawNumber = (req.body && req.body.number) || (req.query && req.query.number) || ''
     const digits = String(rawNumber || '').replace(/[^0-9]/g, '')

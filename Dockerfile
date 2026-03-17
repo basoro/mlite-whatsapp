@@ -19,8 +19,13 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Create directory for auth persistence if needed
-RUN mkdir -p auth
+# Create directory for persistent data
+RUN mkdir -p /data/auth
+RUN chown -R node:node /data
+
+# Set Environment Variables for Persistence
+ENV DB_PATH=/data/whatsapp.db
+ENV AUTH_DIR=/data/auth
 
 # Expose the port
 EXPOSE 3000
