@@ -17,6 +17,7 @@ const app = express()
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(express.static('public')) // Serve static files from public directory
 
 const PORT = process.env.PORT || 3000
 
