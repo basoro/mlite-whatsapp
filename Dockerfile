@@ -1,12 +1,12 @@
-FROM node:20-slim
+FROM node:20
 
 # Install Nginx and build dependencies for better-sqlite3
 RUN apt-get update && apt-get install -y \
     nginx \
     gettext-base \
     python3 \
-    make \
-    g++ \
+    python-is-python3 \
+    build-essential \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
