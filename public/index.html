@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mLITE WhatsApp Web</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
@@ -16,9 +18,12 @@
 <body class="bg-gray-100 h-screen overflow-hidden">
 
     <!-- Auth / QR Code Screen -->
-    <div id="auth-screen" class="flex flex-col items-center justify-center h-screen bg-white hidden">
-        <div class="p-8 bg-white rounded-lg shadow-xl text-center max-w-md w-full">
-            <h1 class="text-2xl font-bold mb-4 text-green-600">WhatsApp Gateway</h1>
+    <div id="auth-screen" class="flex flex-col items-center justify-center h-screen bg-[#f0f2f5] hidden">
+        <div class="p-8 bg-white rounded-lg shadow-xl text-center max-w-md w-full border-t-4 border-green-500">
+            <div class="flex justify-center mb-4">
+                <img src="/logo.svg" alt="WhatsApp Logo" class="h-12 w-12" />
+            </div>
+            <h1 class="text-2xl font-bold mb-4 text-gray-800">mLITE WhatsApp</h1>
             <p class="text-gray-600 mb-6" id="auth-status-text">Menghubungkan ke server...</p>
             <div id="qrcode-container" class="flex justify-center mb-6 min-h-[256px] items-center">
                 <!-- QR Code will be rendered here -->
@@ -43,7 +48,10 @@
         <div id="sidebar-container" class="w-full md:w-1/3 lg:w-1/4 bg-white border-r flex flex-col h-full absolute md:relative z-30 md:z-auto transition-transform duration-300">
             <!-- Sidebar Header -->
             <div class="h-16 bg-gray-100 flex items-center justify-between px-4 border-b">
-                <div class="font-semibold text-gray-700" id="user-info">Connected</div>
+                <div class="flex items-center gap-2">
+                    <img src="/logo.svg" alt="Logo" class="h-8 w-8" />
+                    <div class="font-semibold text-gray-700" id="user-info">Terhubung</div>
+                </div>
                 <button id="btn-logout" class="text-red-500 hover:text-red-700" title="Logout">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
