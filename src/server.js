@@ -329,6 +329,10 @@ async function startBaileys() {
     const msgs = m.messages || []
     for (const msg of msgs) {
       const from = msg.key.remoteJid
+      
+      // Ignore status updates
+      if (from === 'status@broadcast') continue
+
       const id = msg.key.id
       const text = extractText(msg)
       const fromMe = !!msg.key.fromMe
@@ -424,6 +428,10 @@ async function startBaileys() {
   sock.ev.on('messages.update', async (updates) => {
     for (const { key, update } of updates) {
       const from = key.remoteJid
+      
+      // Ignore status updates
+      if (from === 'status@broadcast') continue
+
       const id = key.id
       const text = extractText({ message: update?.message })
       const fromMe = !!key.fromMe
